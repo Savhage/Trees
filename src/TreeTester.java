@@ -5,6 +5,8 @@ public class TreeTester {
         tree.addValue(2);
         tree.addValue(25);
         tree.addValue(65);
-        System.out.println(tree.findValue(5));
+        tree.printTree();
+        tree.remove(25);
+        tree.printTree();
     }
 }

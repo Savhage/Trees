@@ -48,7 +48,47 @@ public class AlexisTree{
         internalPrint(root);
    }
    private void internalPrint(DataContainer current){
-        if()
+        if(current==null){
+
+        }
+        else{
+            internalPrint(current.left);
+            System.out.println(current.getValue());
+            internalPrint(current.right);
+        }
+   }
+   public void remove(int n){
+        root=internalRemove(root,n);
+   }
+   private DataContainer internalRemove(DataContainer current, int n){
+        if(current==null){
+            return current;
+        }
+        else{
+            if(current.getValue()==n){
+                if(current.left==null) {
+                    current = current.right;
+                }
+                else if(current.right==null) {
+                    current = current.left;
+                }
+                else{
+                    DataContainer temp=new DataContainer();
+                    temp.right=current.right;
+                    temp.left=current.left;
+
+                }
+            return current;
+            }
+            else{
+                if(n<current.getValue()){
+                    return internalRemove(current.left, n);
+                }
+                else{
+                    return internalRemove(current.right,n);
+                }
+            }
+        }
    }
 }
 

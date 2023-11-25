@@ -73,10 +73,15 @@ public class AlexisTree{
                     current = current.left;
                 }
                 else{
-                    DataContainer temp=new DataContainer();
-                    temp.right=current.right;
-                    temp.left=current.left;
+                    DataContainer temp=findLargest(current.left);
+                    if(temp.left==null){
+                        temp.right=current.right;
+                        temp.left=current.left;
+                        current=temp;
+                    }
+                    else{
 
+                    }
                 }
             return current;
             }
@@ -88,6 +93,14 @@ public class AlexisTree{
                     return internalRemove(current.right,n);
                 }
             }
+        }
+   }
+   private DataContainer findLargest(DataContainer current){
+        if(current.right==null){
+            return current;
+        }
+        else{
+            findLargest(current.right);
         }
    }
 }

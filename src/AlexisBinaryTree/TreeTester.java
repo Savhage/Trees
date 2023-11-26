@@ -1,3 +1,7 @@
+package AlexisBinaryTree;
+
+import AlexisBinaryTree.AlexisTree;
+
 public class TreeTester {
     public static void main(String[] args){
         AlexisTree tree=new AlexisTree();

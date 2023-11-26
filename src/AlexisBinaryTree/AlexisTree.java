@@ -1,3 +1,5 @@
+package AlexisBinaryTree;
+
 import java.util.Stack;
 public class AlexisTree{
 
@@ -26,9 +28,6 @@ public class AlexisTree{
         return current;
     }
     public boolean findValue(int n){
-        if(root==null){
-            return false;
-        }
         return internalFind(root, n);
     }
    private boolean internalFind(DataContainer current, int n){
@@ -76,10 +75,10 @@ public class AlexisTree{
         }
         else{
             if(n<current.getValue()){
-                current=internalRemove(current.left, n);
+                current.left=internalRemove(current.left, n);
             }
             else{
-                current=internalRemove(current.right,n);
+                current.right=internalRemove(current.right,n);
             }
         }
        return current;

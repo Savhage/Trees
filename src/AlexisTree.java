@@ -1,3 +1,4 @@
+import java.util.Stack;
 public class AlexisTree{
 
     DataContainer root;
@@ -48,10 +49,7 @@ public class AlexisTree{
         internalPrint(root);
    }
    private void internalPrint(DataContainer current){
-        if(current==null){
-
-        }
-        else{
+        if(current!=null){
             internalPrint(current.left);
             System.out.println(current.getValue());
             internalPrint(current.right);
@@ -64,43 +62,34 @@ public class AlexisTree{
         if(current==null){
             return current;
         }
-        else{
-            if(current.getValue()==n){
-                if(current.left==null) {
-                    current = current.right;
-                }
-                else if(current.right==null) {
-                    current = current.left;
-                }
-                else{
-                    DataContainer temp=findLargest(current.left);
-                    if(temp.left==null){
-                        temp.right=current.right;
-                        temp.left=current.left;
-                        current=temp;
-                    }
-                    else{
-
-                    }
-                }
-            return current;
+        if(current.getValue()==n){
+            if(current.left==null) {
+                current = current.right;
+            }
+            else if(current.right==null) {
+                current = current.left;
             }
             else{
-                if(n<current.getValue()){
-                    return internalRemove(current.left, n);
-                }
-                else{
-                    return internalRemove(current.right,n);
-                }
+                current.value=findLargest(current.left);
+                current.left=internalRemove(current.left, findLargest(current.left));
             }
         }
+        else{
+            if(n<current.getValue()){
+                current=internalRemove(current.left, n);
+            }
+            else{
+                current=internalRemove(current.right,n);
+            }
+        }
+       return current;
    }
-   private DataContainer findLargest(DataContainer current){
+   private int findLargest(DataContainer current){
         if(current.right==null){
-            return current;
+            return current.getValue();
         }
         else{
-            findLargest(current.right);
+            return findLargest(current.right);
         }
    }
 }

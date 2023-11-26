@@ -22,12 +22,13 @@ public class MaxHeap extends Heap {
         int index = 0;
         while (hasLeftChild(index)) {
             int tempChildIndex = getLeftChildIndex(index);
-            if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
+            if (hasRightChild(index) && rightChild(index) > leftChild(index)) {
                 tempChildIndex = getRightChildIndex(index);
             }
-            if (items[index] < items[tempChildIndex]) {
+            if (items[index] > items[tempChildIndex]) {
                 break;
             } else {
+                swap(index, tempChildIndex);
                 index = tempChildIndex;
             }
         }

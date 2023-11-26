@@ -5,11 +5,9 @@ public class HeapTester {
         MinHeap min=new MinHeap();
         MaxHeap max=new MaxHeap(25);
         System.out.println(max.peak());
-        min.add(15);
-        System.out.println(min.peak());
-        min.add(25);
-        System.out.println(min.peak());
-        min.add(5);
-        System.out.println(min.peak());
+        max.add(14);
+        System.out.println(max.peak());
+        max.add(27);
+        System.out.println(max.peak());
     }
 }

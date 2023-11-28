@@ -1,6 +1,6 @@
 package AlexisBinaryTree;
-
-import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 public class AlexisTree{
 
     DataContainer root;
@@ -91,5 +91,24 @@ public class AlexisTree{
             return findLargest(current.right);
         }
    }
+   public void printDepthFirst(){
+        Queue<DataContainer> queue=new LinkedList<>();
+        queue=bft(root,queue);
+        int size=queue.size();
+        for(int i=0;i<size;i++){
+            System.out.println(queue.poll().getValue());
+        }
+   }
+    private Queue<DataContainer> bft(DataContainer current, Queue<DataContainer> queue){
+        if(current==null){
+            return queue;
+        }
+        else{
+            queue.offer(current.left);
+            queue.offer(current.right);
+        }
+
+        }
+        return queue
 }
 

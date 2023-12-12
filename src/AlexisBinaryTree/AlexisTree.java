@@ -24,6 +24,7 @@ public class AlexisTree{
             current.right=addDataContainer(current.right,n);
         }
         else{
+            //handles when the value already exists and does nothing with it, ending the recursive loop
         }
         return current;
     }
@@ -44,14 +45,15 @@ public class AlexisTree{
            return internalFind(current.right, n);
        }
    }
-   public void printTree(){
-        internalPrint(root);
+   //Breadth First print for Problem 1
+   public void bft(){
+        bftPrint(root);
    }
-   private void internalPrint(DataContainer current){
+   private void bftPrint(DataContainer current){
         if(current!=null){
-            internalPrint(current.left);
+            bftPrint(current.left);
             System.out.println(current.getValue());
-            internalPrint(current.right);
+            bftPrint(current.right);
         }
    }
    public void remove(int n){
@@ -91,24 +93,20 @@ public class AlexisTree{
             return findLargest(current.right);
         }
    }
-   public void printDepthFirst(){
-        Queue<DataContainer> queue=new LinkedList<>();
-        queue=bft(root,queue);
-        int size=queue.size();
-        for(int i=0;i<size;i++){
-            System.out.println(queue.poll().getValue());
-        }
-   }
-    private Queue<DataContainer> bft(DataContainer current, Queue<DataContainer> queue){
-        if(current==null){
-            return queue;
-        }
-        else{
-            queue.offer(current.left);
-            queue.offer(current.right);
-        }
+   public void dft() {
+       Queue<DataContainer> tree=new LinkedList<>();
+       tree.offer(root);
+       while(!tree.isEmpty()){
+           DataContainer temp=tree.poll();
+           System.out.println(temp.getValue());
+           if(temp.left!=null){
+               tree.offer(temp.left);
+           }
+           if(temp.right!=null){
+               tree.offer(temp.right);
+           }
+       }
 
-        }
-        return queue
+   }
 }
 

@@ -12,8 +12,6 @@ public class TreeTester {
         tree.addValue(19);
         tree.addValue(24);
         tree.addValue(23);
-        tree.printTree();
-        tree.remove(25);
-        tree.printTree();
+        tree.bft();
     }
 }

@@ -9,30 +9,22 @@ public class MinHeap extends Heap{
         add(value);
 
     }
-    @Override
-    public void heapUp(){
-        int index=size-1;
-        while (hasParent(index) && parent(index)>items[index]){
-            swap(getParentIndex(index),index);
-            index=getParentIndex(index);
+    public void heapSort(int index){
+        int check=index;
+        if(getRightChildIndex(index)<size &&  leftChild(index)>rightChild(index)){
+            swap(getLeftChildIndex(index),getRightChildIndex(index));
         }
-    }
-    @Override
-    public void heapDown() {
-        int index = 0;
-        while (hasLeftChild(index)) {
-            int tempChildIndex = getLeftChildIndex(index);
-            if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
-                tempChildIndex = getRightChildIndex(index);
-            }
-            if (items[index] < items[tempChildIndex]) {
-                break;
-            } else {
-                swap(index,tempChildIndex);
-            }
-            index=tempChildIndex;
+        if(getLeftChildIndex(index)<size && leftChild(index)<items[check]){
+            check=getLeftChildIndex(index);
         }
-    }
+        if(getRightChildIndex(index)<size && rightChild(index)<items[check]){
+            check=getRightChildIndex(index);
+        }
+        if(check!=index){
+            swap(index,check);
+            heapSort(check);
+        }
 
+    }
 
 }
